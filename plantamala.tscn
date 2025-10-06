@@ -1,0 +1,113 @@
+[gd_scene load_steps=21 format=3 uid="uid://b3dbr56plm28o"]
+
+[ext_resource type="Script" path="res://plantamala.gd" id="1_c07sd"]
+[ext_resource type="Texture2D" uid="uid://vbnru0sqjdfm" path="res://Recursos/Art/Enemigo1/enemigowalk_0.png" id="1_t0fsw"]
+[ext_resource type="Texture2D" uid="uid://dx7xgyy26dj34" path="res://Recursos/Dead_0.png" id="2_byphp"]
+[ext_resource type="Texture2D" uid="uid://c86u68scr1kj" path="res://Recursos/Art/Enemigo1/enemigowalk_1.png" id="2_c4434"]
+[ext_resource type="Script" path="res://Sprite2Dplantamal.gd" id="2_xp7tt"]
+[ext_resource type="Texture2D" uid="uid://duyqg6w6ioimu" path="res://Recursos/Art/Enemigo1/enemigowalk_2.png" id="3_njwf5"]
+[ext_resource type="Texture2D" uid="uid://di1uwrufvgk3v" path="res://Recursos/Dead_1.png" id="3_pjocf"]
+[ext_resource type="Texture2D" uid="uid://dtjslntqwrxwa" path="res://Recursos/Dead_2.png" id="4_6yp30"]
+[ext_resource type="Texture2D" uid="uid://dwad5482cgvje" path="res://Recursos/Dead_3.png" id="5_4yyce"]
+[ext_resource type="Texture2D" uid="uid://b4fdfjxupa1ya" path="res://Recursos/Dead_4.png" id="6_cxh5x"]
+[ext_resource type="Texture2D" uid="uid://bsfw1dmo7bmj0" path="res://Recursos/Dead_5.png" id="7_fbhws"]
+[ext_resource type="Texture2D" uid="uid://b2by55oonndxe" path="res://Recursos/Dolor/Dolor_0.png" id="8_ee83j"]
+[ext_resource type="Texture2D" uid="uid://bcc6if8iu5fg8" path="res://Recursos/Dolor/Dolor_1.png" id="9_cl4qw"]
+[ext_resource type="Texture2D" uid="uid://cya18dh7kdfv3" path="res://Recursos/Dolor/Dolor_2.png" id="10_4owpg"]
+[ext_resource type="Script" path="res://animacionPlantaMala.gd" id="14_7f5ng"]
+[ext_resource type="AudioStream" uid="uid://bx8uemevsoqrn" path="res://music/efects/dolorplanta.wav" id="16_drtbi"]
+[ext_resource type="AudioStream" uid="uid://b7k4u3t8yscn6" path="res://music/efects/plantamuriendo.mp3" id="17_m2aam"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3iyn"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_byphp")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_pjocf")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_6yp30")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_4yyce")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_cxh5x")
+}, {
+"duration": 2.0,
+"texture": ExtResource("7_fbhws")
+}],
+"loop": true,
+"name": &"deadplanta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ee83j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cl4qw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4owpg")
+}],
+"loop": true,
+"name": &"dolorplanta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t0fsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c4434")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_njwf5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h4lf"]
+size = Vector2(87, 124.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h237k"]
+size = Vector2(87, 119)
+
+[node name="plantamala" type="Area2D" groups=["grupoEnemigos"]]
+script = ExtResource("1_c07sd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("2_xp7tt")
+
+[node name="animacionPlantaMala" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.8147e-06, -1.90735e-06)
+scale = Vector2(0.63625, 0.457408)
+sprite_frames = SubResource("SpriteFrames_q3iyn")
+animation = &"deadplanta"
+autoplay = "idle"
+script = ExtResource("14_7f5ng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15.5, 33.25)
+shape = SubResource("RectangleShape2D_8h4lf")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(10.5, 44.5)
+shape = SubResource("RectangleShape2D_h237k")
+
+[node name="dolorplanta" type="AudioStreamPlayer2D" parent="." groups=["grupoEnemigos"]]
+stream = ExtResource("16_drtbi")
+
+[node name="plantamuriendo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_m2aam")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="dolorplanta" to="." method="_on_dolorplanta_finished"]
+[connection signal="finished" from="plantamuriendo" to="." method="_on_plantamuriendo_finished"]

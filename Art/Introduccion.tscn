@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd73jbempsa3h"]
+
+[ext_resource type="Texture2D" uid="uid://cjmckfnbghvlt" path="res://background.png" id="1_xblb1"]
+[ext_resource type="Texture2D" uid="uid://buwswgba00av2" path="res://INICIO/INICIO1.png" id="2_u0r8f"]
+[ext_resource type="Texture2D" uid="uid://687lnv28qdj1" path="res://INICIO/INICIO2.png" id="3_fj68v"]
+[ext_resource type="Texture2D" uid="uid://ci1m38fvsnbg0" path="res://INICIO/INICIO3.png" id="4_5a07x"]
+[ext_resource type="Texture2D" uid="uid://hc7pn65bhot5" path="res://INICIO/INICIO4.png" id="5_fay6j"]
+[ext_resource type="Texture2D" uid="uid://bpe1kn1iflqmi" path="res://INICIO/INICIO5.png" id="6_h13fj"]
+[ext_resource type="Texture2D" uid="uid://cpawesdqfg6n3" path="res://INICIO/INICIO6.png" id="7_n230q"]
+[ext_resource type="Texture2D" uid="uid://ct3w1fyg05pot" path="res://INICIO/INICIO7.png" id="8_75q3c"]
+[ext_resource type="Texture2D" uid="uid://4cequ45f1mxe" path="res://INICIO/INICIO8.png" id="9_gdl1k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8m1e7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u0r8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fj68v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5a07x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fay6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h13fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n230q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_75q3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gdl1k")
+}],
+"loop": false,
+"name": &"Presenta",
+"speed": 8.0
+}]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(966, 540)
+scale = Vector2(1.95777, 1.81683)
+texture = ExtResource("1_xblb1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12.2589, 27.5204)
+scale = Vector2(0.676796, 0.498037)
+sprite_frames = SubResource("SpriteFrames_8m1e7")
+animation = &"Presenta"
+frame = 7
+frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

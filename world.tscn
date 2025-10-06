@@ -1,0 +1,190 @@
+[gd_scene load_steps=24 format=3 uid="uid://o4n2uxji1seg"]
+
+[ext_resource type="PackedScene" uid="uid://dqan4akylocw8" path="res://player.tscn" id="2_b1ymy"]
+[ext_resource type="AudioStream" uid="uid://dw3th1nu0yh16" path="res://music/musica.mp3" id="3_51b66"]
+[ext_resource type="PackedScene" uid="uid://cy0m56ugtvesr" path="res://bala.tscn" id="5_x3elx"]
+[ext_resource type="PackedScene" uid="uid://f7e6ba7fvma8" path="res://toro.tscn" id="6_h8anw"]
+[ext_resource type="PackedScene" uid="uid://0c0plwvpfadq" path="res://menureanudarysalir.tscn" id="7_cs5u1"]
+[ext_resource type="PackedScene" uid="uid://blbnvnj8o58ph" path="res://plantita.tscn" id="8_5xgok"]
+[ext_resource type="PackedScene" uid="uid://b3dbr56plm28o" path="res://plantamala.tscn" id="8_kfhv7"]
+[ext_resource type="Script" path="res://planti.gd" id="9_2x3cg"]
+[ext_resource type="Texture2D" uid="uid://vbnru0sqjdfm" path="res://Recursos/Art/Enemigo1/enemigowalk_0.png" id="9_441re"]
+[ext_resource type="Texture2D" uid="uid://c86u68scr1kj" path="res://Recursos/Art/Enemigo1/enemigowalk_1.png" id="10_s6ovn"]
+[ext_resource type="Texture2D" uid="uid://duyqg6w6ioimu" path="res://Recursos/Art/Enemigo1/enemigowalk_2.png" id="11_ji6d8"]
+[ext_resource type="Texture2D" uid="uid://bhh12e4snxchn" path="res://music/Art/tablon.png" id="15_j5p2h"]
+[ext_resource type="Texture2D" uid="uid://0y1vjp1rlrdc" path="res://music/Art/background.png" id="15_unu8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ynin"]
+size = Vector2(1684.25, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h065q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_441re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s6ovn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ji6d8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ey2h"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_d35r8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(595, 524)]
+}
+
+[sub_resource type="Animation" id="Animation_vm2rm"]
+resource_name = "moverse"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5, 2, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(595, 524), Vector2(595, 500), Vector2(595, 450), Vector2(595, 400), Vector2(595, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqsy6"]
+_data = {
+"RESET": SubResource("Animation_d35r8"),
+"moverse": SubResource("Animation_vm2rm")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t24vf"]
+
+[sub_resource type="TileSet" id="TileSet_af5hh"]
+sources/0 = SubResource("TileSetAtlasSource_t24vf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uhym"]
+size = Vector2(10, 581)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brkdm"]
+size = Vector2(56, 658)
+
+[node name="world" type="Node2D"]
+position = Vector2(-8, -8)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(817, 334.089)
+scale = Vector2(1.57617, 1.07304)
+texture = ExtResource("15_unu8o")
+
+[node name="Player" parent="." groups=["grupoPlayers"] instance=ExtResource("2_b1ymy")]
+position = Vector2(120, 424)
+collision_mask = 1
+
+[node name="musicajuego" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_51b66")
+volume_db = 5.0
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-37, 20)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(866.875, 590.5)
+shape = SubResource("RectangleShape2D_6ynin")
+
+[node name="bala" parent="." groups=["grupoBalas"] instance=ExtResource("5_x3elx")]
+position = Vector2(350, 328)
+
+[node name="toro" parent="." groups=["grupoToro"] instance=ExtResource("6_h8anw")]
+position = Vector2(376, 544)
+
+[node name="Control" parent="." instance=ExtResource("7_cs5u1")]
+anchors_preset = 9
+anchor_right = 0.0
+offset_left = -928.0
+offset_top = -824.0
+offset_right = -928.0
+offset_bottom = -824.0
+grow_horizontal = 1
+
+[node name="Enemigos" type="Node2D" parent="."]
+
+[node name="plantita" parent="Enemigos" instance=ExtResource("8_5xgok")]
+position = Vector2(928, 528)
+
+[node name="plantamala" parent="Enemigos" instance=ExtResource("8_kfhv7")]
+position = Vector2(944, 376)
+
+[node name="planti" type="Area2D" parent="Enemigos"]
+position = Vector2(595, 524)
+script = ExtResource("9_2x3cg")
+
+[node name="LabelVidas" type="Label" parent="Enemigos/planti"]
+offset_left = -547.0
+offset_top = -388.0
+offset_right = -477.0
+offset_bottom = -362.0
+size_flags_stretch_ratio = 0.81
+text = "vidas"
+vertical_alignment = 2
+uppercase = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigos/planti"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_h065q")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigos/planti"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_2ey2h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemigos/planti"]
+autoplay = "moverse"
+libraries = {
+"": SubResource("AnimationLibrary_fqsy6")
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_af5hh")
+format = 2
+
+[node name="Tablon" type="Sprite2D" parent="."]
+position = Vector2(827.25, 608)
+scale = Vector2(4.32429, 1)
+texture = ExtResource("15_j5p2h")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-24, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(19, 269.5)
+shape = SubResource("RectangleShape2D_6uhym")
+debug_color = Color(0.847059, 0.0627451, 0.894118, 0.419608)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(1652, 271)
+shape = SubResource("RectangleShape2D_brkdm")
+debug_color = Color(0.792157, 0.423529, 0.184314, 0.419608)
+
+[connection signal="body_entered" from="Enemigos/planti" to="Enemigos/planti" method="_on_body_entered"]

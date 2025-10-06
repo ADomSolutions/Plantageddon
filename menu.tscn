@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgfr5bucqao41"]
+
+[ext_resource type="Texture2D" uid="uid://ckuf348513kak" path="res://Recursos/duo.png" id="1_42t7v"]
+[ext_resource type="Script" path="res://menu.gd" id="1_a8a7h"]
+[ext_resource type="FontFile" uid="uid://dyu72glp6endr" path="res://Recursos/fonts/get_schwifty.ttf" id="2_6ejh7"]
+[ext_resource type="AudioStream" uid="uid://c5os3cksigron" path="res://music/principal.mp3" id="2_m0wbg"]
+[ext_resource type="AudioStream" uid="uid://ioqputkb7qjl" path="res://music/efects/boton.mp3" id="5_31rrj"]
+[ext_resource type="Script" path="res://comenzar.gd" id="5_oobxy"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8a7h")
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_m0wbg")
+volume_db = 8.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(299, 69)
+scale = Vector2(1.415, 1.06111)
+texture = ExtResource("1_42t7v")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 372.0
+offset_top = 26.0
+offset_right = -385.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="presenta" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Presenta..."
+horizontal_alignment = 1
+
+[node name="nombrejuego" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.85098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.596078, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.929412, 0.737255, 0.627451, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("2_6ejh7")
+theme_override_font_sizes/font_size = 50
+text = "Plantageddon"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="comenzar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "COMENZAR"
+script = ExtResource("5_oobxy")
+
+[node name="ruidoboton" type="AudioStreamPlayer2D" parent="VBoxContainer/comenzar"]
+stream = ExtResource("5_31rrj")
+volume_db = 24.0
+
+[node name="salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://p6sjswmrx4cu"]
+
+[ext_resource type="Texture2D" uid="uid://y86qs0i5p1h2" path="res://Art/Enemigo1/Daño/Daño_0.png" id="1_1bbop"]
+[ext_resource type="Texture2D" uid="uid://b75tyi56bba55" path="res://Art/Enemigo1/Daño/Daño_1.png" id="2_046bj"]
+[ext_resource type="Texture2D" uid="uid://bcqgc3qddb5xi" path="res://Art/Enemigo1/Daño/Daño_2.png" id="3_eugee"]
+[ext_resource type="Texture2D" uid="uid://d1fpmeknyi4qs" path="res://Art/Enemigo1/Dead/Dead_0.png" id="4_i5028"]
+[ext_resource type="Texture2D" uid="uid://p7kc0k8xloyb" path="res://Art/Enemigo1/Dead/Dead_1.png" id="5_pkg5v"]
+[ext_resource type="Texture2D" uid="uid://onwll84var8d" path="res://Art/Enemigo1/Dead/Dead_2.png" id="6_u4ar5"]
+[ext_resource type="Texture2D" uid="uid://bn3h758e28mld" path="res://Art/Enemigo1/Dead/Dead_3.png" id="7_js20p"]
+[ext_resource type="Texture2D" uid="uid://cxr3powapihjl" path="res://Art/Enemigo1/Dead/Dead_4.png" id="8_0u68u"]
+[ext_resource type="Texture2D" uid="uid://kfw68qunfj1s" path="res://Art/Enemigo1/Dead/Dead_5.png" id="9_ng457"]
+[ext_resource type="Texture2D" uid="uid://c7sqq1c7ilhmc" path="res://Art/Enemigo1/Dead/Daño_6.png" id="10_wtxwu"]
+[ext_resource type="Texture2D" uid="uid://vbnru0sqjdfm" path="res://Art/Enemigo1/enemigowalk_0.png" id="11_htj4o"]
+[ext_resource type="Texture2D" uid="uid://c86u68scr1kj" path="res://Art/Enemigo1/enemigowalk_1.png" id="12_2fp1n"]
+[ext_resource type="Texture2D" uid="uid://duyqg6w6ioimu" path="res://Art/Enemigo1/enemigowalk_2.png" id="13_iijy8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7080"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1bbop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_046bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eugee")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i5028")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pkg5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u4ar5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_js20p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0u68u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ng457")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wtxwu")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_htj4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2fp1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iijy8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[node name="Enemigo" type="Node2D"]
+position = Vector2(306, 238)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-148, -82)
+scale = Vector2(0.3525, 0.325926)
+sprite_frames = SubResource("SpriteFrames_a7080")
+animation = &"Damage"

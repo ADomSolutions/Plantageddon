@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy0m56ugtvesr"]
+
+[ext_resource type="Script" path="res://bala.gd" id="1_0docm"]
+[ext_resource type="Texture2D" uid="uid://cl6d5llsnqo1t" path="res://Recursos/bala.png" id="1_2n4xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcbjx"]
+size = Vector2(17.5, 10.5)
+
+[node name="bala" type="Area2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_0docm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Bala"]]
+position = Vector2(9.53674e-07, 2.38419e-07)
+scale = Vector2(0.248698, 0.34806)
+texture = ExtResource("1_2n4xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.75, 2.25)
+shape = SubResource("RectangleShape2D_wcbjx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["grupoBalas"]]
+position = Vector2(-5, 2)
+scale = Vector2(0.8, 0.8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

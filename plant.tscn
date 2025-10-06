@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cruvkuw7t7k85"]
+
+[ext_resource type="Script" path="res://plant.gd" id="1_fju3t"]
+[ext_resource type="Texture2D" uid="uid://vbnru0sqjdfm" path="res://Recursos/Art/Enemigo1/enemigowalk_0.png" id="1_nbwvh"]
+[ext_resource type="Texture2D" uid="uid://c86u68scr1kj" path="res://Recursos/Art/Enemigo1/enemigowalk_1.png" id="2_61maj"]
+[ext_resource type="Texture2D" uid="uid://duyqg6w6ioimu" path="res://Recursos/Art/Enemigo1/enemigowalk_2.png" id="3_wax3n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw7bq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nbwvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_61maj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wax3n")
+}],
+"loop": true,
+"name": &"walk_plant",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcqdk"]
+size = Vector2(287, 301)
+
+[node name="plant" type="Area2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_fju3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(127, 150)
+scale = Vector2(0.74875, 0.607407)
+sprite_frames = SubResource("SpriteFrames_xw7bq")
+animation = &"walk_plant"
+autoplay = "walk_plant"
+frame_progress = 0.469606
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(129.5, 154.5)
+shape = SubResource("RectangleShape2D_xcqdk")

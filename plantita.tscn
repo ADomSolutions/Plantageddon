@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://blbnvnj8o58ph"]
+
+[ext_resource type="Script" path="res://plantamalamovediza.gd" id="1_f2l2i"]
+[ext_resource type="Texture2D" uid="uid://vbnru0sqjdfm" path="res://Recursos/Art/Enemigo1/enemigowalk_0.png" id="2_hyxsb"]
+[ext_resource type="Script" path="res://plantitamovediza.gd" id="3_vyr51"]
+
+[sub_resource type="Animation" id="Animation_3ipjg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("plantamalamovediza/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(651, 428)]
+}
+
+[sub_resource type="Animation" id="Animation_muj1b"]
+resource_name = "moverplanta"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("plantamalamovediza/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8p71"]
+_data = {
+"RESET": SubResource("Animation_3ipjg"),
+"moverplanta": SubResource("Animation_muj1b")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aplol"]
+size = Vector2(20, 26)
+
+[node name="plantita" type="Node2D" groups=["grupoEnemigos"]]
+metadata/_edit_group_ = true
+
+[node name="plantamalamovediza" type="Area2D" parent="."]
+position = Vector2(3, 0)
+script = ExtResource("1_f2l2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="plantamalamovediza"]
+scale = Vector2(0.152969, 0.111111)
+texture = ExtResource("2_hyxsb")
+script = ExtResource("3_vyr51")
+
+[node name="plantitamovediza" type="AnimationPlayer" parent="plantamalamovediza"]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_p8p71")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plantamalamovediza"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_aplol")
+
+[connection signal="body_entered" from="plantamalamovediza" to="plantamalamovediza" method="_on_body_entered"]
