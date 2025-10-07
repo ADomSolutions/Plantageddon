@@ -49,7 +49,6 @@ Características principales:
 ---
 
 ## 📸 Capturas de pantalla
-<img width="1536" height="1024" alt="PlantageddonDemo2" src="https://github.com/user-attachments/assets/140b7b4e-9a01-45b3-9f7c-0d8fb4a6e895" />
 <img width="358" height="358" alt="PlantageddonDemo1" src="https://github.com/user-attachments/assets/f64fe736-a15d-4442-84d7-d8e30523e5e9" />
 
 
