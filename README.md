@@ -49,9 +49,8 @@ Características principales:
 ---
 
 ## 📸 Capturas de pantalla
-
-<img width="1536" height="1024" alt="linda2" src="https://github.com/user-attachments/assets/47aff5b2-15fd-4918-a9eb-24cf79849bbd" />
-<img width="1024" height="1024" alt="linda1" src="https://github.com/user-attachments/assets/7c073a2b-9528-4aff-a50e-2b2a8e6835cb" />
+<img width="1536" height="1024" alt="PlantageddonDemo2" src="https://github.com/user-attachments/assets/140b7b4e-9a01-45b3-9f7c-0d8fb4a6e895" />
+<img width="358" height="358" alt="PlantageddonDemo1" src="https://github.com/user-attachments/assets/f64fe736-a15d-4442-84d7-d8e30523e5e9" />
 
 
 ---
