@@ -50,9 +50,9 @@ Características principales:
 
 ## 📸 Capturas de pantalla
 
+<img width="1536" height="1024" alt="linda2" src="https://github.com/user-attachments/assets/47aff5b2-15fd-4918-a9eb-24cf79849bbd" />
+<img width="1024" height="1024" alt="linda1" src="https://github.com/user-attachments/assets/7c073a2b-9528-4aff-a50e-2b2a8e6835cb" />
 
-![Gameplay Screenshot](https://img.itch.zone/aW1nLzE1NDYzOTI4LnBuZw==/original/ZjK1pj.png)
-![Menu Screenshot](https://img.itch.zone/aW1nLzE1NDYzOTI5LnBuZw==/original/WoFZxq.png)
 
 ---
 
